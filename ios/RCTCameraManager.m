@@ -282,7 +282,8 @@ RCT_EXPORT_METHOD(capture:(NSDictionary *)options
   NSInteger captureMode = [[options valueForKey:@"mode"] intValue];
   NSInteger captureTarget = [[options valueForKey:@"target"] intValue];
 
-  [self setCaptureQuality:[options valueForKey:@"quality"]];
+  //Force Medium Size. Did not set to quality as an option because it makes Android to crash.
+  [self setCaptureQuality:/*[options valueForKey:@"quality"]*/ AVCaptureSessionPresetMedium];
 
   if (captureMode == RCTCameraCaptureModeStill) {
     [self captureStill:captureTarget options:options resolve:resolve reject:reject];
